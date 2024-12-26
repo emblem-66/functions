@@ -69,7 +69,7 @@ function f_multimedia(){
 
 # Firefox
 function f_firefox(){
-	dnf remove -y firefox
+	dnf remove -y firefox firefox-langpacks
 }
 
 # Fonts
@@ -92,10 +92,16 @@ function f_cachy(){
 }
 
 # Mesa-git Mesa Freeworld
-function f_mesa(){
+function f_mesa-freeworld(){
 	#dnf copr enable -y xxmitsu/mesa-git
 	dnf install -y mesa-va-drivers-freeworld
 	dnf install -y mesa-vdpau-drivers-freeworld
+}
+
+# Mesa-git Mesa Freeworld
+function f_mesa-git(){
+	dnf copr enable -y xxmitsu/mesa-git
+	dnf upgrade -y
 }
 
 # Gaming
