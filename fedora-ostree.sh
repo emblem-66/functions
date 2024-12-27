@@ -68,7 +68,7 @@ function f_terra(){
 	echo "Enabling Terra"
 	#curl -o /etc/yum.repos.d/terra.repo "https://raw.githubusercontent.com/terrapkg/subatomic-repos/main/terra.repo"
 	dnf config-manager addrepo --from-repofile=https://raw.githubusercontent.com/terrapkg/subatomic-repos/main/terra.repo
-	dnf install -y terra-release
+	f_install terra-release
 }
 
 ### RPM-fusion
