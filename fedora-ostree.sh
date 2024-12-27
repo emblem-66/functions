@@ -21,13 +21,13 @@
 #### COMMON OPERATIONS DEFINITION
 
 function install(){
-	rpm-ostree install
-	#dnf install -y
+	#rpm-ostree install
+	dnf install -y --allowerasing --skip-broken --skip-unavailable
 }
 
 function remove(){
-	rpm-ostree override remove
-	#dnf remove -y
+	#rpm-ostree override remove
+	dnf remove -y
 }
 
 function repo(){
@@ -46,7 +46,7 @@ function f_terra(){
 	echo "Enabling Terra"
 	#curl -o /etc/yum.repos.d/terra.repo "https://raw.githubusercontent.com/terrapkg/subatomic-repos/main/terra.repo"
 	dnf config-manager addrepo --from-repofile=https://raw.githubusercontent.com/terrapkg/subatomic-repos/main/terra.repo
-	dnf install -y terra-release
+	install terra-release
 }
 
 ### RPM-fusion
@@ -143,7 +143,7 @@ function f_gaming(){
 	# RPM Fusion
 	dnf install -y steam steam-devices
 	# Terra
-	#dnf install -y umu-launcher
+	dnf install -y umu-launcher
 	# COPR
 	#dnf copr enable -y gui1ty/bottles
 	#dnf install -y bottles
@@ -155,8 +155,8 @@ function f_gaming(){
 	#dnf install -y faugus-launcher
 	# Local RPM - Heroic
 	#wget -O heroic-latest.rpm $(curl -s https://api.github.com/repos/Heroic-Games-Launcher/HeroicGamesLauncher/releases/latest | jq -r '.assets[] | select(.name | contains ("rpm")) | .browser_download_url')
-	#curl -L -o heroic-latest.rpm $(curl -s https://api.github.com/repos/Heroic-Games-Launcher/HeroicGamesLauncher/releases/latest | jq -r '.assets[] | select(.name | contains ("rpm")) | .browser_download_url')
-	#dnf install -y heroic-latest.rpm
+	curl -L -o heroic-latest.rpm $(curl -s https://api.github.com/repos/Heroic-Games-Launcher/HeroicGamesLauncher/releases/latest | jq -r '.assets[] | select(.name | contains ("rpm")) | .browser_download_url')
+	dnf install -y heroic-latest.rpm
 
 	#rpm -qa | sort | grep gamescope
 	#rpm -qa | sort | grep gamemode
