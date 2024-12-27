@@ -154,8 +154,9 @@ function f_gaming(){
 	# Local RPM - Heroic
 	#wget -O heroic-latest.rpm $(curl -s https://api.github.com/repos/Heroic-Games-Launcher/HeroicGamesLauncher/releases/latest | jq -r '.assets[] | select(.name | contains ("rpm")) | .browser_download_url')
 	curl -L -o heroic-latest.rpm $(curl -s https://api.github.com/repos/Heroic-Games-Launcher/HeroicGamesLauncher/releases/latest | jq -r '.assets[] | select(.name | contains ("rpm")) | .browser_download_url')
-	dnf install -y heroic-latest.rpm
-
+	#dnf install -y heroic-latest.rpm
+	#rpm-ostree install heroic-latest.rpm
+	rpm -i heroic-latest.rpm
 	#rpm -qa | sort | grep gamescope
 	#rpm -qa | sort | grep gamemode
 	#rpm -qa | sort | grep mangohud
