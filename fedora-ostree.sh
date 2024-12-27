@@ -139,7 +139,7 @@ function f_gaming(){
 	# Fedora
 	dnf install -y goverlay
 	# RPM Fusion
-	dnf install -y steam.i686 steam.x86_64
+	dnf install -y steam.i686 steam.x86_64 steam-devices.i686 steam-devices.x86_64
 	# Terra
 	dnf install -y umu-launcher
 	# COPR
