@@ -3,39 +3,39 @@
 #### LIST OF FUNCTIONS
 
 ### Terra repos
-f_terra
+# f_terra
 ### RPM-fusion
-f_rpmfusion
+# f_rpmfusion
 ### Fedora auto updates
-f_updates
+# f_updates
 ### Flatpak auto updates
-f_flatpak
+# f_flatpak
 ### First boot setup
-f_firstboot
+# f_firstboot
 ### Multimedia
-f_multimedia
+# f_multimedia
 ### Firefox
-f_firefox
+# f_firefox
 ### Fonts
-f_fonts
+# f_fonts
 ### CachyOS Kernel
-f_cachy
+# f_cachy
 ### Mesa-git Mesa Freeworld
-f_mesa-freeworld
+# f_mesa-freeworld
 ### Mesa-git Mesa Freeworld
-f_mesa-git
+# f_mesa-git
 ### Gaming
-f_gaming
+# f_gaming
 ### Utils
-f_utils
+# f_utils
 ### GNOME
-f_gnome
+# f_gnome
 ### Tailscale
-f_tailscale
+# f_tailscale
 ### Distrobox
-f_distrobox
+# f_distrobox
 ### Sublime Text
-f_sublime
+# f_sublime
 
 #===========================================================#
 
