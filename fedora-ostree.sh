@@ -137,7 +137,7 @@ function f_mesa-git(){
 ### Gaming
 function f_gaming(){
 	# Fedora
-	dnf install -y goverlay
+	dnf install -y goverlay mangohud.x86_64 mangohud.i686 vkbasalt.x86_64 vkbasalt.i686 gamemode.x86_64 gamemode.i686
 	# RPM Fusion
 	dnf install -y steam.i686 steam.x86_64 steam-devices.i686 steam-devices.x86_64
 	# Terra
