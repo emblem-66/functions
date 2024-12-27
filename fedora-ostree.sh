@@ -2,20 +2,46 @@
 
 # start
 
-# INSTALL & UNINSTALL
-function f_install(){
+
+#### LIST OF FUNCTIONS
+
+#
+#
+#
+#
+#
+#
+#
+#
+
+
+#===========================================================#
+
+
+#### COMMON OPERATIONS DEFINITION
+
+function install(){
 	rpm-ostree install
 	#dnf install -y
 }
 
-function f_install(){
+function remove(){
 	rpm-ostree override remove
 	#dnf remove -y
 }
 
+function repo(){
+	echo ""
+}
+
+function config(){
+	echo ""
+}
+
+
 #===========================================================#
 
-# Terra repos
+### Terra repos
 function f_terra(){
 	echo "Enabling Terra"
 	#curl -o /etc/yum.repos.d/terra.repo "https://raw.githubusercontent.com/terrapkg/subatomic-repos/main/terra.repo"
@@ -23,14 +49,14 @@ function f_terra(){
 	dnf install -y terra-release
 }
 
-# RPM-fusion
+### RPM-fusion
 function f_rpmfusion(){
 	echo "Enabling RPM fusion"
 	dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 	dnf install -y rpmfusion-free-release rpmfusion-nonfree-release
 }
 
-# Fedora auto updates
+### Fedora auto updates
 function f_updates(){
 	echo "Enabling auto updates"
 	sudo sed -i 's/#AutomaticUpdatePolicy=none/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
@@ -38,7 +64,7 @@ function f_updates(){
 	systemctl enable rpm-ostreed-automatic.timer
 }
 
-# Flatpak auto updates
+### Flatpak auto updates
 function f_flatpak(){
 	echo -e "[Unit]\nDescription=Update Flatpaks\n[Service]\nType=oneshot\nExecStart=/usr/bin/flatpak update -y\n[Install]\nWantedBy=default.target\n" | sudo tee /etc/systemd/system/flatpak-update.service
 	systemctl enable flatpak-update.service
@@ -46,7 +72,7 @@ function f_flatpak(){
 	systemctl enable flatpak-update.timer
 }
 
-# Multimedia
+### Multimedia
 function f_multimedia(){
 	dnf group install -y multimedia
 	dnf remove -y \
@@ -67,12 +93,12 @@ function f_multimedia(){
 	--install=gstreamer1-vaapi
 }
 
-# Firefox
+### Firefox
 function f_firefox(){
 	dnf remove -y firefox firefox-langpacks
 }
 
-# Fonts
+### Fonts
 function f_fonts(){
 	install_packages=(
 	"ibm-plex-fonts-all"
@@ -82,7 +108,7 @@ function f_fonts(){
 	dnf install -y ${install_packages[@]}
 }
 
-# CachyOS Kernel
+### CachyOS Kernel
 function f_cachy(){
 	setsebool -P domain_kernel_load_modules on
 	dnf remove -y kernel*
@@ -91,20 +117,20 @@ function f_cachy(){
 	rpm -qa | sort | grep kernel
 }
 
-# Mesa-git Mesa Freeworld
+### Mesa-git Mesa Freeworld
 function f_mesa-freeworld(){
 	#dnf copr enable -y xxmitsu/mesa-git
 	dnf install -y mesa-va-drivers-freeworld
 	dnf install -y mesa-vdpau-drivers-freeworld
 }
 
-# Mesa-git Mesa Freeworld
+### Mesa-git Mesa Freeworld
 function f_mesa-git(){
 	dnf copr enable -y xxmitsu/mesa-git
 	dnf upgrade -y
 }
 
-# Gaming
+### Gaming
 function f_gaming(){
 	# Fedora
 	dnf install -y goverlay
@@ -135,11 +161,12 @@ function f_gaming(){
 	#rpm -qa | sort | grep tricks	
 }
 
+### Utils
 function f_utils(){
 	dnf install -y piper
 }
 
-# GNOME
+### GNOME
 function f_gnome(){
 	remove_packages=(
 	"gnome-classic-session"
@@ -174,7 +201,7 @@ function f_gnome(){
 	#git clone https://github.com/joaophi/tailscale-gnome-qs.git /tmp && mv /tmp/tailscale@joaophi.github.com /usr/share/gnome-shell/extensions/
 }
 
-# Tailscale
+### Tailscale
 function f_tailscale(){
 	#curl -o /etc/yum.repos.d/_tailscale.repo "https://pkgs.tailscale.com/stable/fedora/tailscale.repo"
 	#dnf install -y tailscale
@@ -186,7 +213,7 @@ function f_tailscale(){
 	git clone https://github.com/joaophi/tailscale-gnome-qs.git /tmp && mv /tmp/tailscale@joaophi.github.com /usr/share/gnome-shell/extensions/
 }
 
-# Distrobox
+### Distrobox
 function f_distrobox(){
 	dnf remove -y toolbox
 	dnf install -y distrobox
@@ -195,7 +222,7 @@ function f_distrobox(){
 	systemctl enable distrobox-upgrade.timer
 }
 
-# Sublime Text
+### Sublime Text
 function f_sublime(){
 	echo "Installing Sublime Text"
 	#curl -o /etc/yum.repos.d/sublime.repo "https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo"
