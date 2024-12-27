@@ -42,21 +42,21 @@ f_sublime
 
 #### COMMON OPERATIONS DEFINITION
 
-function install(){
+function f_install(){
 	#rpm-ostree install
 	dnf install -y --allowerasing --skip-broken --skip-unavailable
 }
 
-function remove(){
+function f_remove(){
 	#rpm-ostree override remove
 	dnf remove -y
 }
 
-function repo(){
+function f_repo(){
 	echo ""
 }
 
-function config(){
+function f_config(){
 	echo ""
 }
 
@@ -68,7 +68,7 @@ function f_terra(){
 	echo "Enabling Terra"
 	#curl -o /etc/yum.repos.d/terra.repo "https://raw.githubusercontent.com/terrapkg/subatomic-repos/main/terra.repo"
 	dnf config-manager addrepo --from-repofile=https://raw.githubusercontent.com/terrapkg/subatomic-repos/main/terra.repo
-	install terra-release
+	dnf install -y terra-release
 }
 
 ### RPM-fusion
