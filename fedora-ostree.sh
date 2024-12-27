@@ -141,7 +141,7 @@ function f_gaming(){
 	# RPM Fusion
 	dnf install -y steam.i686 steam.x86_64
 	# Terra
-	#dnf install -y umu-launcher
+	dnf install -y umu-launcher
 	# COPR
 	#dnf copr enable -y gui1ty/bottles
 	#dnf install -y bottles
