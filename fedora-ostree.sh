@@ -139,9 +139,9 @@ function f_gaming(){
 	# Fedora
 	dnf install -y goverlay
 	# RPM Fusion
-	dnf install -y steam steam-devices
+	dnf install -y steam
 	# Terra
-	dnf install -y umu-launcher
+	#dnf install -y umu-launcher
 	# COPR
 	#dnf copr enable -y gui1ty/bottles
 	#dnf install -y bottles
