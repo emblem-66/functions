@@ -169,6 +169,7 @@ function f_gaming(){
 ### Utils
 function f_utils(){
 	dnf install -y piper
+	systemctl enable ratbagd.service
 }
 
 ### GNOME
