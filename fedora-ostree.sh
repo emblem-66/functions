@@ -189,11 +189,21 @@ function f_gnome(){
 	"yelp-libs"
 	"yelp-xsl"
 	)
-	dnf remove -y gnome-shell-extension*
-	dnf remove -y gnome-tour
-	dnf remove -y yelp*
+	remove-packages=(
+	"gnome-shell-extension*"
+	"gnome-tour"
+	"yelp*"
+	"gnome-software*"
+	"virtualbox-guest-additions"
+	)
+	#dnf remove -y gnome-shell-extension*
+	#dnf remove -y gnome-tour
+	#dnf remove -y yelp*
+	#dnf remove -y gnome-software*
+	#dnf remove -y virtualbox-guest-additions
 	#dnf remove -y ${remove_packages[@]}
-	
+	dnf remove -y ${remove-packages[@]}
+
 	install_packages=(
 	"adw-gtk3-theme"
 	"ffmpegthumbnailer"
