@@ -35,8 +35,6 @@
 ### Distrobox
 # f_distrobox
 # f_libvirt
-### Sublime Text
-# f_sublime
 
 #===========================================================#
 
@@ -243,20 +241,3 @@ function f_libvirt(){
 	dnf install -y virt-manager libvirt
 	systemctl enable libvirtd.service
 }
-
-### Sublime Text
-function f_sublime(){
-	echo "Installing Sublime Text"
-	#curl -o /etc/yum.repos.d/sublime.repo "https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo"
-	#dnf install -y sublime-text
-	#rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
-	#curl -fsSL https://download.sublimetext.com/sublimehq-rpm-pub.gpg | rpm -v --import
-	#curl -o sublimehq-rpm-pub.gpg "https://download.sublimetext.com/sublimehq-rpm-pub.gpg"
-	#rpm -v --import sublimehq-rpm-pub.gpg
-	#dnf config-manager addrepo --from-repofile=https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
-	#dnf config-manager addrepo --from-repofile=https://download.sublimetext.com/rpm/dev/x86_64/sublime-text.repo
-	#sudo mkdir -p /opt/sublime_text/Icon/128x128/
-	#dnf install -y --refresh sublime-text
-	#rpm -qa | sort | grep sublime-text
-}
-
