@@ -34,6 +34,7 @@
 # f_tailscale
 ### Distrobox
 # f_distrobox
+# f_libvirt
 ### Sublime Text
 # f_sublime
 
@@ -170,8 +171,8 @@ function f_gaming(){
 function f_utils(){
 	dnf install -y piper
 	systemctl enable ratbagd.service
-dnf install input-remapper
-systemctl enable input-remapper
+	dnf install -y input-remapper
+	systemctl enable input-remapper
 }
 
 ### GNOME
@@ -225,6 +226,12 @@ function f_distrobox(){
 	echo -e "[Unit]\nDescription=distrobox-upgrade Automatic Update\n\n[Service]\nType=simple\nExecStart=distrobox-upgrade --all\nStandardOutput=null\n" | sudo tee /etc/systemd/system/distrobox-upgrade.service
 	echo -e "[Unit]\nDescription=distrobox-upgrade Automatic Update Trigger\n\n[Timer]\nOnBootSec=1h\nOnUnitInactiveSec=1d\n\n[Install]\nWantedBy=timers.target\n" | sudo tee /etc/systemd/system/distrobox-upgrade.timer
 	systemctl enable distrobox-upgrade.timer
+}
+
+### libvirt
+function f_libvirt(){
+	dnf install -y virt-manager libvirt
+	systemctl enable libvirtd.service
 }
 
 ### Sublime Text
