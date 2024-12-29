@@ -187,6 +187,7 @@ function f_gnome(){
 	"yelp-libs"
 	"yelp-xsl"
 	)
+ 
 	remove-packages=(
 	"gnome-shell-extension*"
 	"gnome-tour"
@@ -241,3 +242,5 @@ function f_libvirt(){
 	dnf install -y virt-manager libvirt
 	systemctl enable libvirtd.service
 }
+
+#===========================================================#
