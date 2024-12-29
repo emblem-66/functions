@@ -57,13 +57,12 @@ function f_rpmfusion(){
 function f_updates(){
 	echo "Enabling auto updates"
 	sudo sed -i 's/#AutomaticUpdatePolicy=none/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
-	sudo sed -i 's/#LockLayering=false/LockLayering=true/' /etc/rpm-ostreed.conf
 	systemctl enable rpm-ostreed-automatic.timer
 }
 
 ### Flatpak auto updates
 function f_flatpak(){
-	echo -e "[Unit]\nDescription=Update Flatpaks\n[Service]\nType=oneshot\nExecStart=/usr/bin/flatpak update -y\n[Install]\nWantedBy=default.target\n" | sudo tee /etc/systemd/system/flatpak-update.service
+	echo -e "[Unit]\nDescription=Update Flatpaks\n[Service]\nType=oneshot\nExecStart=/usr/bin/flatpak --user uninstall --unused -y --noninteractive ; /usr/bin/flatpak --user update -y --noninteractive ; /usr/bin/flatpak --user repair\n[Install]\nWantedBy=default.target\n" | sudo tee /etc/systemd/system/flatpak-update.service
 	systemctl enable flatpak-update.service
 	echo -e "[Unit]\nDescription=Update Flatpaks\n[Timer]\nOnCalendar=*:0/4\nPersistent=true\n[Install]\nWantedBy=timers.target\n" | sudo tee /etc/systemd/system/flatpak-update.timer
 	systemctl enable flatpak-update.timer
