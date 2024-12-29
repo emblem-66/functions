@@ -170,6 +170,8 @@ function f_gaming(){
 function f_utils(){
 	dnf install -y piper
 	systemctl enable ratbagd.service
+dnf install input-remapper
+systemctl enable input-remapper
 }
 
 ### GNOME
