@@ -76,6 +76,7 @@ function f_firstboot(){
 
 ### Multimedia
 function f_multimedia(){
+	#https://docs.fedoraproject.org/en-US/quick-docs/installing-plugins-for-playing-movies-and-music/
 	dnf group install -y multimedia
 	dnf remove -y \
 	ffmpeg-free \
@@ -230,8 +231,10 @@ function f_distrobox(){
 
 ### libvirt
 function f_libvirt(){
-	dnf install -y virt-manager libvirt
-	systemctl enable libvirtd.service
+	# https://docs.fedoraproject.org/en-US/quick-docs/virtualization-getting-started/
+	# dnf install -y @virtualization # virt-viewer
+	dnf install -y virt-install virt-manager libvirt-daemon-config-network libvirt-daemon-kvm qemu-kvm
+	systemctl enable libvirtd
 }
 
 #===========================================================#
