@@ -74,6 +74,24 @@ function f_firstboot(){
 	systemctl enable first-boot.service
 }
 
+#cat /usr/lib/systemd/system/flatpak-add-fedora-repos.service
+#[Unit]
+#Description=Add Fedora flatpak repositories
+#ConditionPathExists=!/var/lib/flatpak/.fedora-initialized
+#Before=flatpak-system-helper.service
+#
+#[Service]
+#Type=oneshot
+#RemainAfterExit=yes
+#ExecStart=/usr/bin/flatpak remote-add --system --if-not-exists --title "Fedora Flatpaks" fedora oci+https://registry.fedoraproject.org
+#ExecStart=/usr/bin/flatpak remote-add --system --if-not-exists --disable --title "Fedora Flatpaks (testing)" fedora-testing oci+https://registry.fedoraproject.org#testing
+#ExecStartPost=/usr/bin/touch /var/lib/flatpak/.fedora-initialized
+#
+#[Install]
+#WantedBy=multi-user.target
+#
+
+
 ### Multimedia
 function f_multimedia(){
 	#https://docs.fedoraproject.org/en-US/quick-docs/installing-plugins-for-playing-movies-and-music/
