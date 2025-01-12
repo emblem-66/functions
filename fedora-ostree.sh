@@ -56,7 +56,8 @@ function f_rpmfusion(){
 ### Fedora auto updates
 function f_updates(){
 	echo "Enabling auto updates"
-	sudo sed -i 's/#AutomaticUpdatePolicy=none/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
+ 	#sudo sed -i 's/#AutomaticUpdatePolicy=none/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
+	sed -i 's/#AutomaticUpdatePolicy=none/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf
 	systemctl enable rpm-ostreed-automatic.timer
 }
 
