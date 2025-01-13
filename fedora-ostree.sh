@@ -63,15 +63,15 @@ function f_updates(){
 
 ### Flatpak auto updates
 function f_flatpak(){
-	echo -e "[Unit]\nDescription=Update Flatpaks\n[Service]\nType=oneshot\nExecStart=/usr/bin/flatpak uninstall --unused -y --noninteractive ; /usr/bin/flatpak update -y --noninteractive ; /usr/bin/flatpak repair\n[Install]\nWantedBy=default.target\n" | sudo tee /etc/systemd/system/flatpak-update.service
+	echo -e "[Unit]\nDescription=Update Flatpaks\n[Service]\nType=oneshot\nExecStart=/usr/bin/flatpak uninstall --unused -y --noninteractive ; /usr/bin/flatpak update -y --noninteractive ; /usr/bin/flatpak repair\n[Install]\nWantedBy=default.target\n" | tee /etc/systemd/system/flatpak-update.service
 	systemctl enable flatpak-update.service
-	echo -e "[Unit]\nDescription=Update Flatpaks\n[Timer]\nOnCalendar=*:0/4\nPersistent=true\n[Install]\nWantedBy=timers.target\n" | sudo tee /etc/systemd/system/flatpak-update.timer
+	echo -e "[Unit]\nDescription=Update Flatpaks\n[Timer]\nOnCalendar=*:0/4\nPersistent=true\n[Install]\nWantedBy=timers.target\n" | tee /etc/systemd/system/flatpak-update.timer
 	systemctl enable flatpak-update.timer
 }
 
 ### First boot setup
 function f_firstboot(){
-	echo -e "[Unit]\nDescription=First Boot Setup\nAfter=network.target\nConditionPathExists=!/var/home/pc/.config/gnome-initial-setup-done\n\n[Service]\nType=oneshot\nExecStart=/usr/bin/flatpak uninstall --all -y --noninteractive\nExecStart=/usr/bin/flatpak remote-delete --force fedora\nExecStart=/usr/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo\nExecStart=/usr/bin/bash -c 'curl -sSL ${FLATPAK_PACKAGE_LIST_URL} | xargs -r flatpak install -y --noninteractive'\n\n[Install]\nWantedBy=multi-user.target" | sudo tee /etc/systemd/system/first-boot.service
+	echo -e "[Unit]\nDescription=First Boot Setup\nAfter=network.target\nConditionPathExists=!/var/home/pc/.config/gnome-initial-setup-done\n\n[Service]\nType=oneshot\nExecStart=/usr/bin/flatpak uninstall --all -y --noninteractive\nExecStart=/usr/bin/flatpak remote-delete --force fedora\nExecStart=/usr/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo\nExecStart=/usr/bin/bash -c 'curl -sSL ${FLATPAK_PACKAGE_LIST_URL} | xargs -r flatpak install -y --noninteractive'\n\n[Install]\nWantedBy=multi-user.target" | tee /etc/systemd/system/first-boot.service
 	systemctl enable first-boot.service
 }
 
