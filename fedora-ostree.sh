@@ -243,8 +243,8 @@ function f_tailscale(){
 function f_distrobox(){
 	dnf remove -y toolbox
 	dnf install -y distrobox
-	echo -e "[Unit]\nDescription=distrobox-upgrade Automatic Update\n\n[Service]\nType=simple\nExecStart=distrobox-upgrade --all\nStandardOutput=null\n" | sudo tee /etc/systemd/system/distrobox-upgrade.service
-	echo -e "[Unit]\nDescription=distrobox-upgrade Automatic Update Trigger\n\n[Timer]\nOnBootSec=1h\nOnUnitInactiveSec=1d\n\n[Install]\nWantedBy=timers.target\n" | sudo tee /etc/systemd/system/distrobox-upgrade.timer
+	echo -e "[Unit]\nDescription=distrobox-upgrade Automatic Update\n\n[Service]\nType=simple\nExecStart=distrobox-upgrade --all\nStandardOutput=null\n" | tee /etc/systemd/system/distrobox-upgrade.service
+	echo -e "[Unit]\nDescription=distrobox-upgrade Automatic Update Trigger\n\n[Timer]\nOnBootSec=1h\nOnUnitInactiveSec=1d\n\n[Install]\nWantedBy=timers.target\n" | tee /etc/systemd/system/distrobox-upgrade.timer
 	systemctl enable distrobox-upgrade.timer
 }
 
