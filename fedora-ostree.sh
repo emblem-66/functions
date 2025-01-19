@@ -187,7 +187,8 @@ function f_gaming(){
 ### Utils
 function f_utils(){
 	dnf install -y python-pip pipx
-	#dnf install -y piper
+ 	dnf copr enable -y jackgreiner/piper-git
+	dnf install -y piper
 	#systemctl enable ratbagd.service
 	#dnf install -y input-remapper
 	#systemctl enable input-remapper
