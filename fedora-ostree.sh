@@ -136,7 +136,10 @@ function f_cachy(){
 	dnf remove -y kernel*
 	dnf copr enable -y bieszczaders/kernel-cachyos
 	dnf install -y kernel-cachyos kernel-cachyos-devel-matched
-	rpm -qa | sort | grep kernel
+	sudo dnf copr enable bieszczaders/kernel-cachyos-addons
+	#sudo dnf install libcap-ng libcap-ng-devel procps-ng procps-ng-devel
+	sudo dnf install uksmd
+	sudo systemctl enable --now uksmd.service
 }
 
 ### Mesa-git Mesa Freeworld
@@ -154,34 +157,29 @@ function f_mesa-git(){
 
 ### Gaming
 function f_gaming(){
-	# Fedora
-	dnf install -y goverlay mangohud.x86_64 mangohud.i686 vkBasalt.x86_64 vkBasalt.i686 gamemode.x86_64 gamemode.i686
 	# RPM Fusion
-	dnf install -y steam.i686 steam.x86_64 steam-devices.i686 steam-devices.x86_64
+	#dnf install -y steam.i686 steam.x86_64 steam-devices.i686 steam-devices.x86_64
+	dnf install -y steam steam-devices
 	# Terra
 	dnf install -y umu-launcher
 	# COPR
-	#dnf copr enable -y gui1ty/bottles
-	#dnf install -y bottles
-	#dnf copr enable -y atim/heroic-games-launcher
-	#dnf install -y heroic-games-launcher-bin
-	#dnf copr enable -y g3tchoo/prismlauncher
-	#dnf install -y prismlauncher
+	dnf copr enable -y gui1ty/bottles
+	dnf install -y bottles
+	dnf copr enable -y atim/heroic-games-launcher
+	dnf install -y heroic-games-launcher-bin
+	dnf copr enable -y g3tchoo/prismlauncher
+	dnf install -y prismlauncher
 	#dnf copr enable -y faugus/faugus-launcher
 	#dnf install -y faugus-launcher
+	# Fedora
+	#dnf install -y goverlay mangohud.x86_64 mangohud.i686 vkBasalt.x86_64 vkBasalt.i686 gamemode.x86_64 gamemode.i686
+	dnf install -y goverlay mangohud vkBasalt gamemode
 	# Local RPM - Heroic
 	#wget -O heroic-latest.rpm $(curl -s https://api.github.com/repos/Heroic-Games-Launcher/HeroicGamesLauncher/releases/latest | jq -r '.assets[] | select(.name | contains ("rpm")) | .browser_download_url')
 	#curl -L -o /tmp/heroic-latest.rpm $(curl -s https://api.github.com/repos/Heroic-Games-Launcher/HeroicGamesLauncher/releases/latest | jq -r '.assets[] | select(.name | contains ("rpm")) | .browser_download_url')
 	#dnf install -y /tmp/heroic-latest.rpm
 	#rpm-ostree install heroic-latest.rpm
 	#rpm -i heroic-latest.rpm
-	#rpm -qa | sort | grep gamescope
-	#rpm -qa | sort | grep gamemode
-	#rpm -qa | sort | grep mangohud
-	#rpm -qa | sort | grep wine
-	#rpm -qa | sort | grep dxvk
-	#rpm -qa | sort | grep vkd3d
-	#rpm -qa | sort | grep tricks	
 }
 
 ### Utils
@@ -189,7 +187,7 @@ function f_utils(){
 	dnf install -y python-pip pipx
  	dnf copr enable -y jackgreiner/piper-git
 	dnf install -y piper
-	#systemctl enable ratbagd.service
+	systemctl enable ratbagd.service
 	#dnf install -y input-remapper
 	#systemctl enable input-remapper
 }
