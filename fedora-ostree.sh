@@ -188,8 +188,8 @@ function f_utils(){
  	dnf copr enable -y jackgreiner/piper-git
 	dnf install -y piper
 	systemctl enable ratbagd.service
-	#dnf install -y input-remapper
-	#systemctl enable input-remapper
+	dnf install -y input-remapper
+	systemctl enable input-remapper
 }
 
 ### GNOME
