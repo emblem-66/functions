@@ -214,6 +214,9 @@ function f_gnome(){
 	dnf remove -y yelp*
 	dnf remove -y gnome-software*
 	dnf remove -y virtualbox-guest-additions
+ 	
+  	dnf copr enable -y dusansimic/themes
+  	dnf install -y morewaita-icon-theme
 	#dnf remove -y ${remove_packages[@]}
 
 	install_packages=(
