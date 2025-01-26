@@ -1,4 +1,4 @@
-# Functions for Fedora
+8# Functions for Fedora
 
 #### LIST OF FUNCTIONS
 
@@ -123,14 +123,11 @@ function f_firefox(){
 ### Fonts
 function f_fonts(){
 	dnf copr enable -y peterwu/iosevka
+        dnf install -y iosevka*
 	install_packages=(
 	"ibm-plex-fonts-all"
 	"rsms-inter-fonts"
 	"levien-inconsolata-fonts"
-        "iosevka-etoile"
-        "iosevka-curly"
-        "iosevka-aile"
-        "iosevka-slab"
 	)
 	dnf install -y ${install_packages[@]}
 }
