@@ -127,9 +127,10 @@ function f_fonts(){
 	"ibm-plex-fonts-all"
 	"rsms-inter-fonts"
 	"levien-inconsolata-fonts"
- 	"iosevka-etoile"
- "iosevka-curly"
- "iosevka-aile"
+        "iosevka-etoile"
+        "iosevka-curly"
+        "iosevka-aile"
+        "iosevka-slab"
 	)
 	dnf install -y ${install_packages[@]}
 }
