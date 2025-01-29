@@ -1,4 +1,4 @@
-8# Functions for Fedora
+# Functions for Fedora
 
 #### LIST OF FUNCTIONS
 
