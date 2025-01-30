@@ -122,7 +122,7 @@ function f_firefox(){
 
 ### Fonts
 function f_fonts(){
-	dnf copr enable -y peterwu/iosevka && dnf install -y iosevka
+	#dnf copr enable -y peterwu/iosevka && dnf install -y iosevka
 	install_packages=(
 	"ibm-plex-fonts-all"
 	"rsms-inter-fonts"
