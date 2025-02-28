@@ -184,8 +184,9 @@ function f_gaming(){
 
 ### Utils
 function f_utils(){
-  dnf install -y gsmartcontrol smartmontools
-	dnf install -y micro python-pip pipx
+	dnf install -y gsmartcontrol smartmontools
+	dnf install -y borgbackup borgmatic
+ 	dnf install -y micro python-pip pipx
  	#dnf copr enable -y jackgreiner/piper-git
 	dnf install -y piper
 	systemctl enable ratbagd.service
