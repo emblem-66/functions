@@ -97,24 +97,24 @@ function f_firstboot(){
 function f_multimedia(){
 	#https://docs.fedoraproject.org/en-US/quick-docs/installing-plugins-for-playing-movies-and-music/
 	dnf group install -y multimedia
-#	dnf remove -y \
-#	ffmpeg-free \
-#	libavcodec-free \
-#	libavdevice-free \
-#	libavfilter-free \
-#	libavformat-free \
-#	libavutil-free \
-#	libpostproc-free \
-#	libswresample-free \
-#	libswscale-free
-#	dnf install -y \
-#	ffmpeg \
-#	gstreamer1-plugin-libav \
-#	streamer1-plugins-bad-free-extras \
-#	gstreamer1-plugins-bad-freeworld \
-#	gstreamer1-plugins-ugly \
-#	gstreamer1-vaapi
-	dnf install -y celluloid
+	dnf remove -y \
+	ffmpeg-free \
+	libavcodec-free \
+	libavdevice-free \
+	libavfilter-free \
+	libavformat-free \
+	libavutil-free \
+	libpostproc-free \
+	libswresample-free \
+	libswscale-free
+	dnf install -y \
+	ffmpeg \
+	gstreamer1-plugin-libav \
+	streamer1-plugins-bad-free-extras \
+	gstreamer1-plugins-bad-freeworld \
+	gstreamer1-plugins-ugly \
+	gstreamer1-vaapi
+	dnf install -y clapper showtime celluloid mpv
 }
 
 ### Firefox
@@ -163,14 +163,14 @@ function f_gaming(){
 	#dnf install -y steam.i686 steam.x86_64 steam-devices.i686 steam-devices.x86_64
 	dnf install -y steam steam-devices
 	# Terra
-	dnf install -y umu-launcher
+	#dnf install -y umu-launcher
 	# COPR
-	dnf copr enable -y gui1ty/bottles
-	dnf install -y bottles
-	dnf copr enable -y atim/heroic-games-launcher
-	dnf install -y heroic-games-launcher-bin
-	dnf copr enable -y g3tchoo/prismlauncher
-	dnf install -y prismlauncher
+	#dnf copr enable -y gui1ty/bottles
+	#dnf install -y bottles
+	#dnf copr enable -y atim/heroic-games-launcher
+	#dnf install -y heroic-games-launcher-bin
+	#dnf copr enable -y g3tchoo/prismlauncher
+	#dnf install -y prismlauncher
 	#dnf copr enable -y faugus/faugus-launcher
 	#dnf install -y faugus-launcher
 	# Fedora
@@ -186,8 +186,8 @@ function f_gaming(){
 
 ### Utils
 function f_utils(){
-	dnf install -y borgbackup borgmatic syncthing
-	dnf install -y micro python-pip pipx
+	#dnf install -y borgbackup borgmatic syncthing
+	#dnf install -y python-pip pipx
 #	dnf install -y piper
 #	systemctl enable ratbagd.service
 #	dnf install -y input-remapper
