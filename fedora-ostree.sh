@@ -96,24 +96,25 @@ function f_firstboot(){
 ### Multimedia
 function f_multimedia(){
 	#https://docs.fedoraproject.org/en-US/quick-docs/installing-plugins-for-playing-movies-and-music/
-	#dnf group install -y multimedia
-  dnf install -y celluloid
-	dnf remove -y \
-	ffmpeg-free \
-	libavcodec-free \
-	libavdevice-free \
-	libavfilter-free \
-	libavformat-free \
-	libavutil-free \
-	libpostproc-free \
-	libswresample-free \
-	libswscale-free \
-	--install=ffmpeg \
-	--install=gstreamer1-plugin-libav \
-	--install=gstreamer1-plugins-bad-free-extras \
-	--install=gstreamer1-plugins-bad-freeworld \
-	--install=gstreamer1-plugins-ugly \
-	--install=gstreamer1-vaapi
+	dnf group install -y multimedia
+#	dnf remove -y \
+#	ffmpeg-free \
+#	libavcodec-free \
+#	libavdevice-free \
+#	libavfilter-free \
+#	libavformat-free \
+#	libavutil-free \
+#	libpostproc-free \
+#	libswresample-free \
+#	libswscale-free
+#	dnf install -y \
+#	ffmpeg \
+#	gstreamer1-plugin-libav \
+#	streamer1-plugins-bad-free-extras \
+#	gstreamer1-plugins-bad-freeworld \
+#	gstreamer1-plugins-ugly \
+#	gstreamer1-vaapi
+	dnf install -y celluloid
 }
 
 ### Firefox
