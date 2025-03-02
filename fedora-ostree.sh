@@ -96,7 +96,8 @@ function f_firstboot(){
 ### Multimedia
 function f_multimedia(){
 	#https://docs.fedoraproject.org/en-US/quick-docs/installing-plugins-for-playing-movies-and-music/
-	dnf group install -y multimedia
+	#dnf group install -y multimedia
+  dmf install -y celluloid
 	dnf remove -y \
 	ffmpeg-free \
 	libavcodec-free \
